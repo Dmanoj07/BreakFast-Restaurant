@@ -1,0 +1,57 @@
+<div class='container'>
+  <br /><br />
+  <h2>Hi, <span class='welcomeName'> {{user.firstName}}!</span></h2>
+  <br /><br />
+
+  <h4> Here's your order summary. An email for confirmation has been sent.</h4>
+  <br />
+  {{#if hasDat}}
+    <div class='tableContainer'>
+      <table class='table table-sm table-bordered'>
+        <thead class='thead-dark'>
+          <tr>
+            <th scope='col'>#</th>
+            <th scope='col'>Title</th>
+            <th scope='col'>Price</th>
+            <th scope='col'>Quantity</th>
+            <th scope='col'>Total price</th>
+
+          </tr>
+        </thead>
+        <tbody>
+          {{#each docs}}
+            <tr>
+              <th>{{@index}}</th>
+              <td>{{title}}</td>
+              <td>{{price}}</td>
+              <td class='quantityRowTb'>
+                <p class='qVals'>{{quantity}} </p>
+
+              </td>
+              <td>{{totalPrice}}</td>
+            </tr>
+          {{/each}}
+        </tbody>
+
+      </table>
+    </div>
+    <br />
+    <p class='totalCostPp'>
+      Total:
+      <span class='colredd'> ${{totalOverallCost}}</span>
+    </p>
+    <a href='/customer/cart' class='loadDtBtn addCartBtn'>Return Home</a>
+  {{else}}
+    <br />
+    <br />
+    <p> Please add items to cart to proceed to checkout.</p>
+  {{/if}}
+  <br />
+  <br />
+  <div class='LoadingAction'>
+    <div class='sendtoMid'>
+      <div class='loader'></div>
+    </div>
+  </div>
+  <script src='/js/showLoad.js'></script>
+</div>
